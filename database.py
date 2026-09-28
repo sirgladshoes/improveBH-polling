@@ -5,10 +5,9 @@ import libsql_client
 #turso_url = os.environ["TURSO_DATABASE_URL"]
 #turso_token = os.environ["TURSO_AUTH_TOKEN"]
 
-turso_url = "https://data-sirgladshoes.aws-us-east-1.turso.io"
-turso_token = "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3OTAzODA2NDMsImlkIjoiMDFhMGRiMDAtNTcwMS03MzMxLThhMjAtMDQ1ZTAyZGFhZTZkIiwia2lkIjoiRnZaUlE5TnR0dWJVd0tuR1lrcEdKRVd1NUZuODVjSE56WEtVMGk1SGlzcyIsInJpZCI6IjMzNzkyOTJmLTJhOTgtNGVlZC1hODFjLTI4YzZmOGNkMDdhOCJ9.InGJ0JKLkTCqjin3r3nm20dCGPwSHbCZotNalaIClBqBQJx93DDyQOWlKS0dv6GPH6NMUL9bdM-0NoApP0RiCw"
 
-con = {}
+turso_url = os.environ["TURSO_DATABASE_URL"]
+turso_token = os.environ["TURSO_AUTH_TOKEN"]
 
 def create_table(table:str):
     con.execute("CREATE TABLE IF NOT EXISTS " + table)
