@@ -2,8 +2,8 @@ name: Poll Brawlhalla
 
 on:
   schedule:
-    - cron: "0 0 */1 * *"   # every 6 hours (UTC), change to what you want
-  workflow_dispatch:          # adds a manual "Run workflow" button
+    - cron: "0 0 */1 * *"   
+  workflow_dispatch:
 
 jobs:
   poll:
