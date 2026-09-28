@@ -1,6 +1,5 @@
 import database
 import requests
-from time import time
 import time
 
 
