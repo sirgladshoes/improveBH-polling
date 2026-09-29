@@ -10,12 +10,17 @@ legend_lookup = {legend["legend_id"]: legend for legend in requests.get(legends_
 def get_general_player_data(bhid:int):
     player_data_response = requests.get(
         stats_url,
-        params={"brawlhalla_id": bhid}
+        params={"brawlhalla_id": bhid},
+        timeout=5
     )
+
 
     player_data = {"brawlhalla_id":bhid, "name":"No Data", "wins":0, "games":0, "level":0, "legends":[], "weapons": []}
 
-    response_data = player_data_response.json()
+
+    response_data = {}
+    if player_data_response.ok: response_data=player_data_response.json() 
+    else: return response_data
 
     for key in player_data.keys():
         if key == "legends":
@@ -117,13 +122,19 @@ tracked_players = database.fetch_tracked_players()
 print(tracked_players)
 cooldown = 10
 for player in tracked_players:
-    current = get_general_player_data(int(player))
-    database.insert_general_api_data(int(time.time()), current)
-    time.sleep(cooldown)
+    for i in range(2):
+        current = get_general_player_data(int(player))
+        if current:
+            database.insert_general_api_data(int(time.time()), current)
+            break
+        time.sleep(cooldown)
 
 for player in tracked_players:
-    current_ranked = get_ranked_data(int(player))
-    if current_ranked: database.insert_ranked_api_data(int(time.time()), current_ranked)
-    time.sleep(cooldown)
+    for i in range(2):
+        current_ranked = get_ranked_data(int(player))
+        if current_ranked: 
+            database.insert_ranked_api_data(int(time.time()), current_ranked)
+            break
+        time.sleep(cooldown)
 
 database.close()
