@@ -3,7 +3,6 @@ name: Poll Brawlhalla
 on:
   schedule:
     - cron: "30 23 * * *"
-      timezone: "America/New_York"
   workflow_dispatch:
 
 jobs:
