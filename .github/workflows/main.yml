@@ -2,7 +2,7 @@ name: Poll Brawlhalla
 
 on:
   schedule:
-    - cron: "0 0 */1 * *"   
+    - cron: "3 6 */1 * *"   
   workflow_dispatch:
 
 jobs:
