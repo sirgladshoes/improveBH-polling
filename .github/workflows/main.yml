@@ -2,7 +2,8 @@ name: Poll Brawlhalla
 
 on:
   schedule:
-    - cron: "16 22 */1 * *"   
+    - cron: "30 23 * * *"
+      timezone: "America/New_York"
   workflow_dispatch:
 
 jobs:
